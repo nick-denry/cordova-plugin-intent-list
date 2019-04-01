@@ -12,7 +12,7 @@
     "ecosystem:cordova",
     "cordova-android",
     "application-list",
-    "installed-apps",
+    "installed-apps"
   ],
   "author": "Nick Denry",
   "license": "Apache 2.0"
