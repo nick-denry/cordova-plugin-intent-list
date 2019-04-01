@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-intent-list",
+  "version": "0.0.2",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-intent-list",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "application-list",
+    "installed-apps",
+  ],
+  "author": "Nick Denry",
+  "license": "Apache 2.0"
+}
