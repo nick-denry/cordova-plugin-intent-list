@@ -15,6 +15,10 @@
     "installed-apps",
     "intent"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nick-denry/cordova-plugin-intent-list.git"
+  },
   "author": "Nick Denry",
   "license": "Apache 2.0"
 }
