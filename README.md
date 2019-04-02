@@ -8,7 +8,7 @@ Demo.
 
 cordova plugin add cordova-plugin-intent-list
 
-or
+or directly via git (unstable)
 
 cordova plugin add https://github.com/nick-denry/cordova-plugin-intent-list
 
