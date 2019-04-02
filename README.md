@@ -38,5 +38,12 @@ navigator.IntentList.getList(function(applist) {
 
 ## 3. Display base64 image in HTML
 
+Add `img-src 'self' data:;` to your CSP declaration to allow `data:image` images, i.e.: 
+```html
+<!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src *" />
+```
+**NOTE** Do not use wide open CSP declaration in production. @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/#content-security-policy
+
 @see https://stackoverflow.com/a/8499716
 
