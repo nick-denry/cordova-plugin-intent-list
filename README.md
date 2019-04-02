@@ -32,7 +32,7 @@ navigator.IntentList.getList(function(applist) {
 }
 ```
 
-3. Display base64 image in HTML
+## 3. Display base64 image in HTML
 
 @see https://stackoverflow.com/a/8499716
 
