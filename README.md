@@ -6,6 +6,10 @@ Demo.
 
 ## 1. Installation
 
+cordova plugin add cordova-plugin-intent-list
+
+or
+
 cordova plugin add https://github.com/nick-denry/cordova-plugin-intent-list
 
 ## 2. Usage
@@ -16,7 +20,7 @@ navigator.IntentList.getList(success, error);
 
 ```js
 navigator.IntentList.getList(function(applist) {
-    console.log(applist);    
+    console.log(applist);
 }, function(errorMesssage) {
     console.log(errorMesage);
 });
@@ -25,25 +29,33 @@ navigator.IntentList.getList(function(applist) {
 `applist` will contain array of JSON objects.
 
 ```json
-{
-  "applist": [
-    {
-      "label": "Chrome",
-      "package": "com.android.chrome",
-      "packageIcon": "iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAYAAADnRuK4AAAABHNCSVQICAgIfAhkiAAAIABJREF..."
-    }
-  ]
-}
+[
+  {
+    "label": "Chrome",
+    "package": "com.android.chrome",
+    "packageIcon": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAJAAAACQCAYAAADnRuK4AAAABHNCSVQICAgIfAhkiAAAIABJREF..."
+  },
+  ...
+]
+
 ```
 
-## 3. Display base64 image in HTML
+## 3. Update Content Security Policy
 
-Add `img-src 'self' data:;` to your CSP declaration to allow `data:image` images, i.e.: 
+Add `img-src 'self' data:;` to your CSP declaration to allow `data:image` images, i.e.:
 ```html
 <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
 <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src *" />
 ```
 **NOTE** Do not use wide open CSP declaration in production. @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/#content-security-policy
 
-@see https://stackoverflow.com/a/8499716
 
+## 4. Credits
+
+- [Nick Denry](https://github.com/nick-denry)
+- [All Contributors](../../contributors)
+
+
+## 5. License
+
+Licensed under Apache 2.0. Please see [License File](LICENSE) for more information.
