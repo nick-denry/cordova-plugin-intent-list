@@ -88,6 +88,7 @@ public class IntentList extends CordovaPlugin {
                         byte[] intentImageBytes = baos.toByteArray();
                         // Convert Intent icon to base64
                         String intentIconBase64 = Base64.encodeToString(intentImageBytes, Base64.DEFAULT);
+                        intentIconBase64 = "data:image/png;base64, " + intentIconBase64;
                         // Create json object for current Intent
                         JSONObject intentInfo = new JSONObject();
                         intentInfo.put("label", intentLabel);
