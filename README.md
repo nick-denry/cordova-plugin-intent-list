@@ -6,11 +6,11 @@ Demo.
 
 ## 1. Installation
 
-cordova plugin add cordova-plugin-intent-list
+    cordova plugin add cordova-plugin-intent-list
 
 or directly via git (unstable)
 
-cordova plugin add https://github.com/nick-denry/cordova-plugin-intent-list
+    cordova plugin add https://github.com/nick-denry/cordova-plugin-intent-list
 
 ## 2. Usage
 
@@ -47,7 +47,7 @@ Add `img-src 'self' data:;` to your CSP declaration to allow `data:image` images
 <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
 <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src *" />
 ```
-**NOTE** Do not use wide open CSP declaration in production. @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/#content-security-policy
+⚠️ __NOTE__ Do not use wide open CSP declaration in production. @see https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-whitelist/#content-security-policy
 
 
 ## 4. Credits
