@@ -2,9 +2,11 @@ package com.nickdenry.intentList;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,11 +15,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Base64;
 
-import java.util.List;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ByteArrayOutputStream;
+import java.lang.CharSequence;
+import java.util.List;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -28,7 +31,7 @@ import org.json.JSONObject;
 
 
 /**
- * This class echoes a string called from JavaScript.
+ * Get Intent list from Android and send it to js.
  */
 public class IntentList extends CordovaPlugin {
 
@@ -68,31 +71,29 @@ public class IntentList extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
-                    // Get list of installed apps from packageManager
+                    // Get list of Intents from packageManager
+                    Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+                    mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
                     PackageManager packageManager = cordova.getActivity().getPackageManager();
-                    List<ApplicationInfo> installedPackages = packageManager.getInstalledApplications(0);
+                    List<ResolveInfo> resovleInfoList = packageManager.queryIntentActivities(mainIntent, 0);
                     // Create JSON array for js results
                     JSONArray applicationsList = new JSONArray();
-                    for (ApplicationInfo packageInfo : installedPackages) {
-                        // Skip system applications
-                        if ((packageInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 1) {
-                            continue;
-                        } else {
-                            // Get app icon
-                            Drawable appIcon = packageManager.getApplicationIcon(packageInfo);
-                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                            Bitmap bitmap = drawableToBitmap(appIcon);
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                            byte[] appImageBytes = baos.toByteArray();
-                            // Convert app icon to base64
-                            String appIconBase64 = Base64.encodeToString(appImageBytes, Base64.DEFAULT);
-                            // Create json object for current app
-                            JSONObject pkgInfo = new JSONObject();
-                            pkgInfo.put("label", packageInfo.loadLabel(packageManager)); //这里获取的是应用名 //Keep original comment ;)
-                            pkgInfo.put("packageName", packageInfo.packageName);
-                            pkgInfo.put("packageIcon", appIconBase64);
-                            applicationsList.put(pkgInfo);
-                        }
+                    for (ResolveInfo resolveInfo : resovleInfoList) {
+                        String packageName = resolveInfo.activityInfo.packageName; // Get Intent package name
+                        CharSequence intentLabel = resolveInfo.loadLabel(packageManager); //这里获取的是应用名 //Keep original comment ;)
+                        Drawable appIcon = resolveInfo.loadIcon(packageManager); // Get Intent icon and convert it to base64
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        Bitmap bitmap = drawableToBitmap(appIcon);
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                        byte[] intentImageBytes = baos.toByteArray();
+                        // Convert Intent icon to base64
+                        String intentIconBase64 = Base64.encodeToString(intentImageBytes, Base64.DEFAULT);
+                        // Create json object for current Intent
+                        JSONObject intentInfo = new JSONObject();
+                        intentInfo.put("label", intentLabel);
+                        intentInfo.put("package", packageName);
+                        intentInfo.put("packageIcon", intentIconBase64);
+                        applicationsList.put(intentInfo);
                     }
                     callbackContext.success(applicationsList);
                 } catch (Exception e) {
