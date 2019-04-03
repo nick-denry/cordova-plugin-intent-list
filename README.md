@@ -1,5 +1,13 @@
 # Simple phonegap plugin to get Android installed apps with icons
 
+![Version](https://img.shields.io/npm/v/cordova-plugin-intent-list/latest.svg)
+![Downloads](https://img.shields.io/npm/dt/cordova-plugin-intent-list.svg)
+[![Platforms](https://img.shields.io/badge/platforms-Android-lightgrey.svg)](https://github.com/jnick-denry/cordova-plugin-intent-list)
+![License](https://img.shields.io/npm/l/cordova-plugin-intent-list.svg)
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6MZ5YRYEDSVSQ&source=url" title="Donate once-off to this project using Paypal">
+        <img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPayl donate button" />
+    </a>
+
 Demo.
 
 <img src="https://user-images.githubusercontent.com/1450983/55368734-1c9c2e00-54fc-11e9-9651-309c5a94399a.png" width="auto" height="400" />
