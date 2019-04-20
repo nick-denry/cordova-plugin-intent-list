@@ -1,4 +1,4 @@
-# Simple phonegap plugin to get Android installed apps with icons
+# Simple phonegap plugin to get Android installed apps with base64 icons
 
 ![Version](https://img.shields.io/npm/v/cordova-plugin-intent-list/latest.svg)
 ![Downloads](https://img.shields.io/npm/dt/cordova-plugin-intent-list.svg)
