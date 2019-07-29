@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-intent-list",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "cordova": {
     "id": "cordova-plugin-intent-list",
