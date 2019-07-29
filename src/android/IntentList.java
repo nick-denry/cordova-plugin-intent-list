@@ -67,7 +67,7 @@ public class IntentList extends CordovaPlugin {
         return false;
     }
 
-    private void getIntentList(CallbackContext callbackContext) {
+    private void getIntentList(final CallbackContext callbackContext) {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
